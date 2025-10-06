@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Data Analyst & Data Scientist Portfolio</title>
+  <meta name="description"
+    content="Portfolio of a Data Analyst & Data Scientist: analytics dashboards, machine learning, NLP, forecasting, and experimentation." />
+  <meta property="og:title" content="Data Analyst & Data Scientist Portfolio" />
+  <meta property="og:description"
+    content="Analytics dashboards, machine learning, NLP, forecasting, and experimentation." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="" />
+  <meta name="theme-color" content="#0f172a" />
+
+  <style>
+    :root {
+      --bg: #0b1220;
+      --bg-elev: #0f172a;
+      --text: #e5eef8;
+      --muted: #9fb3c8;
+      --primary: #60a5fa;
+      /* blue-400 */
+      --accent: #22d3ee;
+      /* cyan-400 */
+      --card: #0b132b;
+      --border: #1e293b;
+      --success: #34d399;
+      --warning: #f59e0b;
+      --danger: #f87171;
+      --chip: #12213a;
+      --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+    }
+
+    .light {
+      --bg: #f7fafc;
+      --bg-elev: #ffffff;
+      --text: #0b1220;
+      --muted: #4b5563;
+      --primary: #2563eb;
+      --accent: #0891b2;
+      --card: #ffffff;
+      --border: #e5e7eb;
+      --chip: #eef2ff;
+      --shadow: 0 8px 24px rgba(2, 6, 23, .08);
+    }
+
+    /* Base */
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: linear-gradient(180deg, var(--bg) 0%, #0a0f1c 100%);
+      color: var(--text);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: saturate(160%) blur(12px);
+      background: color-mix(in oklab, var(--bg-elev) 86%, transparent);
+      border-bottom: 1px solid var(--border);
+    }
+    
+
+    .nav {
+      position: sticky;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: .3px;
+    }
+
+    .brand .logo {
+      width: 32px;
+      height: 32px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      box-shadow: var(--shadow);
+    }
+
+    .nav a {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: var(--text);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .btn,
+    button.btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #001224;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+    }
+
+    .btn.ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+      box-shadow: none;
+    }
+
+    .theme-toggle {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border);
+    }
+
+    .theme-toggle[aria-pressed="true"] {
+      color: var(--text);
+      border-color: var(--text);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 56px 0 32px;
+      position: relative;
+      overflow: clip;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .kicker {
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: .18em;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(32px, 5vw, 56px);
+      line-height: 1.08;
+      margin: 8px 0 12px;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: clamp(16px, 2vw, 18px);
+    }
+
+    .hero-ctas {
+      display: flex;
+      gap: 12px;
+      margin-top: 22px;
+      flex-wrap: wrap;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .stat {
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    .stat .num {
+      font-size: 24px;
+      font-weight: 800;
+    }
+
+    .stat .label {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .viz {
+      border: 1px dashed var(--border);
+      border-radius: 16px;
+      padding: 16px;
+      background: radial-gradient(1200px 600px at 20% -10%, color-mix(in oklab, var(--accent) 24%, transparent) 0%, transparent 60%), var(--card);
+      min-height: 240px;
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+    }
+
+    /* Section */
+    section {
+      padding: 56px 0;
+    }
+
+    section .section-title {
+      font-size: 28px;
+      margin: 0 0 18px;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      margin: 0 0 20px;
+    }
+
+    /* Chips */
+    .chips {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      background: var(--chip);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    /* Grid cards */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+    }
+
+    .col-4 {
+      grid-column: span 4;
+    }
+
+    .col-6 {
+      grid-column: span 6;
+    }
+
+    .col-12 {
+      grid-column: span 12;
+    }
+
+    @media (max-width: 900px) {
+
+      .col-4,
+      .col-6 {
+        grid-column: span 6;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .col-4,
+      .col-6 {
+        grid-column: span 12;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: clip;
+      display: flex;
+      flex-direction: column;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      height: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+      border-color: color-mix(in oklab, var(--primary) 50%, var(--border));
+    }
+
+    .card-media {
+      aspect-ratio: 16/9;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, color-mix(in oklab, var(--primary) 24%, var(--card)), color-mix(in oklab, var(--accent) 22%, var(--card)));
+      color: #001224;
+      font-weight: 800;
+    }
+
+    .card-body {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .card-title {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .card-desc {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .card .chips {
+      margin-top: 2px;
+    }
+
+    .card-actions {
+      margin-top: auto;
+      display: flex;
+      gap: 10px;
+    }
+
+    .card .btn {
+      padding: 8px 12px;
+      font-size: 14px;
+    }
+
+    /* Timeline */
+    .timeline {
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+      position: relative;
+    }
+
+    .timeline-title {
+      margin: 0 0 4px;
+      font-size: 18px;
+    }
+
+    .timeline-meta {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 28px 0 48px;
+      border-top: 1px solid var(--border);
+      background: color-mix(in oklab, var(--bg-elev) 70%, transparent);
+    }
+
+    .socials {
+      display: flex;
+      gap: 10px;
+    }
+
+    .socials a {
+      padding: 10px 12px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--muted);
+    }
+
+    .socials a:hover {
+      color: var(--text);
+      border-color: color-mix(in oklab, var(--primary) 50%, var(--border));
+    }
+
+    /* Utilities */
+    .muted {
+      color: var(--muted);
+    }
+
+    .center {
+      text-align: center;
+    }
+
+    .space {
+      height: 8px;
+    }
+
+    .sr-only {
+      position: absolute;
+      left: -9999px;
+    }
+
+    /* Reveal */
+    [data-reveal] {
+      transform: translateY(8px);
+      opacity: 0;
+      transition: all .6s ease;
+    }
+
+    [data-reveal].visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <a class="sr-only" href="#about">Skip to content</a>
+
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <span class="logo" aria-hidden="true">Σ</span>
+        <span>Data Analyst & Data Scientist</span>
+      </div>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#about-me">About Me</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div style="display:flex; gap:10px; align-items:center;">
+        <button id="themeToggle" class="btn theme-toggle" aria-label="Toggle theme" aria-pressed="false">Theme</button>
+        <a class="btn" href="#contact">Hire Me</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero container" id="home">
+      <div class="hero-grid">
+        <div>
+          <span class="kicker">Analytics • ML • Experimentation</span>
+          <h1>Turning data into decisions and models into impact</h1>
+          <p class="lead">I design robust analytics, build machine learning systems, and communicate insights that drive
+            business outcomes. From SQL pipelines and BI dashboards to NLP and forecasting, I cover the end-to-end data
+            lifecycle.</p>
+          <div class="hero-ctas">
+            <a class="btn" href="assets/resume.pdf" download>Download Resume</a>
+            <a class="btn ghost" href="https://github.com/knightking15" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn ghost" href="https://www.linkedin.com/in/muhammadlaminu" target="_blank"
+              rel="noopener">LinkedIn</a>
+          </div>
+          <div class="stats">
+            <div class="stat">
+              <div class="num">2+ yrs</div>
+              <div class="label">Experience</div>
+            </div>
+            <div class="stat">
+              <div class="num">20+</div>
+              <div class="label">Projects</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="viz" aria-hidden="true">
+            <svg width="100%" height="100%" viewBox="0 0 600 300" role="img" aria-label="Mock analytics visualization">
+              <defs>
+                <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#60a5fa" />
+                  <stop offset="100%" stop-color="#22d3ee" />
+                </linearGradient>
+              </defs>
+              <rect x="30" y="30" width="540" height="220" rx="10" ry="10" fill="none" stroke="#1e293b" />
+              <g>
+                <rect x="60" y="190" width="50" height="50" fill="url(#g1)" rx="6" />
+                <rect x="130" y="150" width="50" height="90" fill="url(#g1)" rx="6" opacity=".85" />
+                <rect x="200" y="170" width="50" height="70" fill="url(#g1)" rx="6" opacity=".7" />
+                <rect x="270" y="120" width="50" height="120" fill="url(#g1)" rx="6" opacity=".85" />
+                <rect x="340" y="80" width="50" height="160" fill="url(#g1)" rx="6" />
+                <rect x="410" y="140" width="50" height="100" fill="url(#g1)" rx="6" opacity=".8" />
+                <rect x="480" y="110" width="50" height="130" fill="url(#g1)" rx="6" opacity=".9" />
+              </g>
+              <polyline points="60,190 155,140 225,160 295,110 365,80 435,130 505,100" fill="none" stroke="#34d399"
+                stroke-width="3" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">About</h2>
+        <p class="section-sub">Data Analyst and Data Scientist specialized in translating business questions into
+          analytical plans, designing data models, and delivering ML solutions that are reliable and explainable.
+          Comfortable working across SQL, Python, and BI stacks with MLOps practices for reproducibility.</p>
+        <div class="chips">
+          <span class="chip">SQL • dbt</span>
+          <span class="chip">Python • Pandas</span>
+          <span class="chip">Tableau • Power BI</span>
+          <span class="chip">Experimentation • Causal Inference</span>
+          <span class="chip">ML • XGBoost • Scikit-learn</span>
+          <span class="chip">NLP • Transformers</span>
+          <span class="chip">Time Series • Forecasting</span>
+          <span class="chip">MLOps • Docker • Airflow • MLflow</span>
+          <span class="chip">AWS • GCP • Azure</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Me -->
+    <section id="about-me">
+      <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-sub">I’m Muhammad Saleh Laminu, a data analyst and data scientist focused on building reliable
+          analytics and ML systems that create measurable business value.</p>
+        <div class="grid">
+          <div class="card col-6" data-reveal>
+            <div class="card-body">
+              <div style="display:flex; align-items:center; gap:12px;">
+                <img src="./images/WhatsApp Image 2025-10-03 at 17.59.06.jpeg" alt="Photo of Muhammad Saleh Laminu" title="Muhammad Saleh Laminu" loading="lazy" decoding="async" style="width:88px; height:88px; border-radius:50%; object-fit:cover; border:2px solid var(--border); box-shadow: var(--shadow); background: var(--bg-elev);" />
+                <div>
+                  <div style="font-weight:700; font-size:18px;">Muhammad Saleh Laminu</div>
+                  <div class="muted">Data Analyst & Data Scientist</div>
+                </div>
+              </div>
+              <div class="space"></div>
+              <ul class="muted" style="line-height:1.9; padding-left:16px; margin:0;">
+                <li>Based in Abuja, Nigeria</li>
+                <li>2+ years experience across analytics & ML</li>
+                <li>B.Sc. Software Enginnering</li>
+              </ul>
+              <div class="space"></div>
+              <div class="chips">
+                <span class="chip">Remote-friendly</span>
+                <span class="chip">Mentorship</span>
+                <span class="chip">Open-source</span>
+              </div>
+            </div>
+          </div>
+          <div class="card col-6" data-reveal>
+            <div class="card-body">
+              <h3 class="card-title">Background</h3>
+              <p class="card-desc">I translate ambiguous problems into analytical plans, ship dashboards and models, and
+                partner with product and engineering to turn insights into shipped features. I favor simple, well-tested
+                solutions and clear communication.</p>
+              <div class="grid">
+                <div class="col-6">
+                  <h4 class="card-title">I specialize in</h4>
+                  <ul class="muted" style="line-height:1.9; padding-left:16px; margin:0;">
+                    <li>Analytical engineering with SQL & dbt</li>
+                    <li>ML systems with scikit-learn/XGBoost</li>
+                    <li>Experimentation & causal inference</li>
+                  </ul>
+                </div>
+                <div class="col-6">
+                  <h4 class="card-title">Principles</h4>
+                  <ul class="muted" style="line-height:1.9; padding-left:16px; margin:0;">
+                    <li>Explainability over black boxes</li>
+                    <li>Reproducibility and MLOps</li>
+                    <li>Impact-oriented storytelling</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="space"></div>
+              <div class="chips">
+                <span class="chip">Python</span>
+                <span class="chip">SQL</span>
+                <span class="chip">Power BI</span>
+                <span class="chip">MLflow</span>
+                <span class="chip">Airflow</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <div class="container">
+        <h2 class="section-title">Skills</h2>
+        <p class="section-sub">End-to-end capabilities spanning data analytics, machine learning, and product impact.
+        </p>
+        <div class="grid">
+          <div class="card col-4" data-reveal>
+            <div class="card-body">
+              <h3 class="card-title">Analytics & BI</h3>
+              <p class="card-desc">Dimensional modeling, KPI design, dashboarding, A/B test analysis, cohorting, funnel
+                analytics, anomaly detection.</p>
+              <div class="chips">
+                <span class="chip">Power BI</span>
+                <span class="chip">Tableau</span>
+                <span class="chip">Excel</span>
+                <span class="chip">SQL</span>
+              </div>
+            </div>
+          </div>
+          <div class="card col-4" data-reveal>
+            <div class="card-body">
+              <h3 class="card-title">Machine Learning</h3>
+              <p class="card-desc">Supervised/unsupervised learning, feature engineering, model selection, evaluation,
+                interpretability, and deployment.</p>
+              <div class="chips">
+                <span class="chip">Scikit-learn</span>
+                <span class="chip">XGBoost</span>
+                <span class="chip">LightGBM</span>
+                <span class="chip">PyTorch</span>
+              </div>
+            </div>
+          </div>
+          <div class="card col-4" data-reveal>
+            <div class="card-body">
+              <h3 class="card-title">Data Engineering</h3>
+              <p class="card-desc">Pipelines, orchestration, reproducibility, and data quality for reliable analytics
+                and ML workflows.</p>
+              <div class="chips">
+                <span class="chip">Airflow</span>
+                <span class="chip">dbt</span>
+                <span class="chip">Docker</span>
+                <span class="chip">Spark</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <div class="container">
+        <div style="display:flex; align-items:end; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+          <div>
+            <h2 class="section-title">Projects</h2>
+            <p class="section-sub">Selected analytics and machine learning work. Use filters to explore.</p>
+          </div>
+          <div class="chips" role="tablist" aria-label="Project filters">
+            <button class="chip" role="tab" aria-selected="true" data-filter="all">All</button>
+            <button class="chip" role="tab" aria-selected="false" data-filter="analytics">Analytics</button>
+            <button class="chip" role="tab" aria-selected="false" data-filter="ml">ML</button>
+            <button class="chip" role="tab" aria-selected="false" data-filter="nlp">NLP</button>
+            <button class="chip" role="tab" aria-selected="false" data-filter="forecasting">Forecasting</button>
+          </div>
+        </div>
+
+        <div class="grid" id="projectGrid">
+          <!-- Analytics: Dashboard -->
+          <article class="card col-4" data-category="analytics" data-reveal>
+            <div class="card-media">Power BI</div>
+            <div class="card-body">
+              <h3 class="card-title">Sales Insights Dashboard</h3>
+              <p class="card-desc">End-to-end modeling with star schema, DAX measures, and drill-through. Highlights YoY
+                trends, cohort retention, and regional performance.</p>
+              <div class="chips">
+                <span class="chip">Power BI</span>
+                <span class="chip">DAX</span>
+                <span class="chip">SQL</span>
+              </div>
+              <div class="card-actions">
+                <a class="btn" href="#" target="_blank" rel="noopener">Live</a>
+                <a class="btn ghost" href="#" target="_blank" rel="noopener">Repo</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- ML: Classification -->
+          <article class="card col-4" data-category="ml" data-reveal>
+            <div class="card-media">ML</div>
+            <div class="card-body">
+              <h3 class="card-title">Customer Churn Prediction</h3>
+              <p class="card-desc">Gradient-boosted trees with calibrated probabilities, SHAP explainability, and a
+                cost-sensitive decision rule decreasing churn by 12%.</p>
+              <div class="chips">
+                <span class="chip">Python</span>
+                <span class="chip">XGBoost</span>
+                <span class="chip">SHAP</span>
+              </div>
+              <div class="card-actions">
+                <a class="btn" href="#" target="_blank" rel="noopener">Notebook</a>
+                <a class="btn ghost" href="#" target="_blank" rel="noopener">Repo</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- NLP -->
+          <article class="card col-4" data-category="nlp" data-reveal>
+            <div class="card-media">NLP</div>
+            <div class="card-body">
+              <h3 class="card-title">Topic Modeling for Reviews</h3>
+              <p class="card-desc">Preprocessing pipeline, LDA/BERTopic comparison, coherence tuning, and insights on
+                customer pain points powering roadmap decisions.</p>
+              <div class="chips">
+                <span class="chip">Python</span>
+                <span class="chip">spaCy</span>
+                <span class="chip">BERTopic</span>
+              </div>
+              <div class="card-actions">
+                <a class="btn" href="#" target="_blank" rel="noopener">Report</a>
+                <a class="btn ghost" href="#" target="_blank" rel="noopener">Repo</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Forecasting -->
+          <article class="card col-4" data-category="forecasting" data-reveal>
+            <div class="card-media">Time Series</div>
+            <div class="card-body">
+              <h3 class="card-title">Demand Forecasting</h3>
+              <p class="card-desc">Hierarchical forecasting with Prophet and LightGBM features. Evaluation with MAPE and
+                pinball loss for quantile forecasts.</p>
+              <div class="chips">
+                <span class="chip">Prophet</span>
+                <span class="chip">LightGBM</span>
+                <span class="chip">Feature Store</span>
+              </div>
+              <div class="card-actions">
+                <a class="btn" href="#" target="_blank" rel="noopener">Notebook</a>
+                <a class="btn ghost" href="#" target="_blank" rel="noopener">Repo</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Analytics: Experimentation -->
+          <article class="card col-4" data-category="analytics" data-reveal>
+            <div class="card-media">Experimentation</div>
+            <div class="card-body">
+              <h3 class="card-title">A/B Test Analyzer</h3>
+              <p class="card-desc">Reusable notebook for CUPED, variance reduction, power analysis, and non-parametric
+                tests with visualizations and decision guidance.</p>
+              <div class="chips">
+                <span class="chip">Python</span>
+                <span class="chip">Statsmodels</span>
+                <span class="chip">Seaborn</span>
+              </div>
+              <div class="card-actions">
+                <a class="btn" href="#" target="_blank" rel="noopener">Notebook</a>
+                <a class="btn ghost" href="#" target="_blank" rel="noopener">Repo</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- ML: Fraud -->
+          <article class="card col-4" data-category="ml" data-reveal>
+            <div class="card-media">ML</div>
+            <div class="card-body">
+              <h3 class="card-title">Fraud Detection</h3>
+              <p class="card-desc">Imbalanced learning with focal loss, stratified time splits, and cost-based
+                thresholds yielding 25% lift in precision at target recall.</p>
+              <div class="chips">
+                <span class="chip">Scikit-learn</span>
+                <span class="chip">XGBoost</span>
+                <span class="chip">MLflow</span>
+              </div>
+              <div class="card-actions">
+                <a class="btn" href="#" target="_blank" rel="noopener">Report</a>
+                <a class="btn ghost" href="#" target="_blank" rel="noopener">Repo</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Engineering -->
+          <article class="card col-4" data-category="analytics" data-reveal>
+            <div class="card-media">Engineering</div>
+            <div class="card-body">
+              <h3 class="card-title">SQL & dbt Warehouse</h3>
+              <p class="card-desc">ELT pipeline with source freshness tests, incremental models, and documented marts
+                for marketing and product analytics.</p>
+              <div class="chips">
+                <span class="chip">SQL</span>
+                <span class="chip">dbt</span>
+                <span class="chip">Airflow</span>
+              </div>
+              <div class="card-actions">
+                <a class="btn" href="#" target="_blank" rel="noopener">Docs</a>
+                <a class="btn ghost" href="#" target="_blank" rel="noopener">Repo</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+      <div class="container">
+        <h2 class="section-title">Experience</h2>
+        <p class="section-sub">Impact across analytics and data science roles.</p>
+        <div class="timeline">
+          <div class="timeline-item" data-reveal>
+            <h3 class="timeline-title">Senior Data Scientist • Acme Corp</h3>
+            <div class="timeline-meta">2022 — Present • Remote</div>
+            <ul class="muted">
+              <li>Built propensity models for upsell that increased conversion by 8% and improved CAC/LTV ratio.</li>
+              <li>Partnered with product on experimentation, implementing CUPED and sequential monitoring.</li>
+              <li>Productionized models with MLflow tracking and CI/CD, reducing deployment time by 40%.</li>
+            </ul>
+          </div>
+          <div class="timeline-item" data-reveal>
+            <h3 class="timeline-title">Data Analyst • Beta Analytics</h3>
+            <div class="timeline-meta">2019 — 2022 • Onsite</div>
+            <ul class="muted">
+              <li>Designed executive dashboards in Power BI with drill-through and row-level security.</li>
+              <li>Authored SQL data models and documentation, improving metric alignment across teams.</li>
+              <li>Led root cause analyses for anomalies and delivered actionable insights to stakeholders.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education & Certs -->
+    <section id="education">
+      <div class="container">
+        <h2 class="section-title">Education & Certifications</h2>
+        <div class="grid">
+          <div class="card col-6" data-reveal>
+            <div class="card-body">
+              <h3 class="card-title">B.Sc. in Data Science</h3>
+              <p class="card-desc">Mewar International University • 2021 — 2025</p>
+              <div class="chips">
+                <span class="chip">Machine Learning</span>
+                <span class="chip">Statistics</span>
+                <span class="chip">Big Data</span>
+              </div>
+            </div>
+          </div>
+          <div class="card col-6" data-reveal>
+            <div class="card-body">
+              <h3 class="card-title">Certifications</h3>
+              <p class="card-desc">Power BI Data Analyst, Google Cloud Data Engineer, AWS Machine Learning Specialty.
+              </p>
+              <div class="chips">
+                <span class="chip">Power BI</span>
+                <span class="chip">GCP</span>
+                <span class="chip">AWS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-sub">Open to full-time roles and freelance projects. Best way to reach me is email.</p>
+        <div class="grid">
+          <div class="card col-6" data-reveal>
+            <div class="card-body">
+              <h3 class="card-title">Get in touch</h3>
+              <form action="https://formspree.io/f/xeorkwrj" method="POST">
+                <div class="grid">
+                  <div class="col-6">
+                    <label for="name" class="muted">Name</label>
+                    <input id="name" name="name" required
+                      style="width:100%; padding:10px 12px; margin-top:6px; border-radius:10px; border:1px solid var(--border); background: var(--bg-elev); color: var(--text);" />
+                  </div>
+                  <div class="col-6">
+                    <label for="email" class="muted">Email</label>
+                    <input id="email" name="email" type="email" required
+                      style="width:100%; padding:10px 12px; margin-top:6px; border-radius:10px; border:1px solid var(--border); background: var(--bg-elev); color: var(--text);" />
+                  </div>
+                  <div class="col-12">
+                    <label for="message" class="muted">Message</label>
+                    <textarea id="message" name="message" rows="5" required
+                      style="width:100%; padding:10px 12px; margin-top:6px; border-radius:10px; border:1px solid var(--border); background: var(--bg-elev); color: var(--text);"></textarea>
+                  </div>
+                </div>
+                <div class="space"></div>
+                <button type="submit" class="btn">Send</button>
+              </form>
+            </div>
+          </div>
+          <div class="card col-6" data-reveal>
+            <div class="card-body">
+              <h3 class="card-title">Details</h3>
+              <ul class="muted" style="line-height:1.9; padding-left: 16px;">
+                <li>Email: muhammadlaminu18@gmail.com</li>
+                <li>Location: Abuja, Nigeria (Remote-friendly)</li>
+                <li>LinkedIn: https://www.linkedin.com/in/muhammadlaminu</li>
+                <li>GitHub: https://github.com/knightking15</li>
+              </ul>
+              <p class="muted">Prefer a quick intro? Include your problem, timeline, and budget range if applicable.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container"
+      style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+      <div class="muted">© <span id="y"></span> Muhammad Saleh Laminu. All rights reserved.</div>
+      <div class="socials">
+        <a href="https://github.com/knightking15" target="_blank" rel="noopener" aria-label="GitHub">GH</a>
+        <a href="https://www.linkedin.com/in/muhammadlaminu" target="_blank" rel="noopener" aria-label="LinkedIn">IN</a>
+        <a href="mailto:muhammadlaminu18@gmail.com" aria-label="Email">@</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle with localStorage
+    (function () {
+      const root = document.documentElement;
+      const btn = document.getElementById('themeToggle');
+      const saved = localStorage.getItem('theme');
+      if (saved === 'light') document.body.classList.add('light');
+      btn.setAttribute('aria-pressed', document.body.classList.contains('light'));
+      btn.addEventListener('click', () => {
+        document.body.classList.toggle('light');
+        const isLight = document.body.classList.contains('light');
+        btn.setAttribute('aria-pressed', isLight);
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+      });
+    })();
+
+    // Smooth scroll and active link
+    (function () {
+      const links = document.querySelectorAll('header .nav-links a');
+      links.forEach(a => {
+        a.addEventListener('click', e => {
+          const href = a.getAttribute('href');
+          if (href.startsWith('#')) {
+            e.preventDefault();
+            document.querySelector(href).scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        });
+      });
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const id = entry.target.getAttribute('id');
+          const link = document.querySelector(`header .nav-links a[href="#${id}"]`);
+          if (link) link.classList.toggle('active', entry.isIntersecting);
+        });
+      }, { rootMargin: '-40% 0px -60% 0px', threshold: 0.01 });
+      document.querySelectorAll('main section[id]').forEach(s => obs.observe(s));
+    })();
+
+    // Reveal on scroll
+    (function () {
+      const els = document.querySelectorAll('[data-reveal]');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      els.forEach(el => io.observe(el));
+    })();
+
+    // Project filter
+    (function () {
+      const tabs = document.querySelectorAll('[data-filter]');
+      const cards = document.querySelectorAll('#projectGrid .card');
+      function setActive(btn) {
+        tabs.forEach(t => t.setAttribute('aria-selected', 'false'));
+        btn.setAttribute('aria-selected', 'true');
+      }
+      tabs.forEach(btn => {
+        btn.addEventListener('click', () => {
+          setActive(btn);
+          const f = btn.dataset.filter;
+          cards.forEach(c => {
+            const show = f === 'all' || c.dataset.category === f;
+            c.style.display = show ? '' : 'none';
+          });
+        });
+      });
+    })();
+
+    
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Muhammad Laminu",
+    "jobTitle": "Data Analyst & Data Scientist",
+    "url": "",
+    "sameAs": [
+      "https://github.com/knightking15",
+      "https://www.linkedin.com/in/muhammadlaminu"
+    ]
+  }
+  </script>
+</body>
+
+</html>
